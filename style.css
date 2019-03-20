@@ -1,0 +1,80 @@
+@font-face {
+	font-family: 'Montserrat-Regular';
+	src: url('Montserrat-Regular.otf');
+}
+
+@font-face {
+	font-family: 'Montserrat-Italic';
+	src: url('Montserrat-Italic.otf');
+}
+
+body{
+	text-align: center;
+}
+
+#playlist
+{
+	display:block;
+	text-align: left;
+	color: blue;
+	font-family: "Montserrat-Regular";
+}
+
+#player
+{
+	display:block;
+	text-align: left;
+	color: blue;
+	font-family: "Montserrat-Regular";
+}
+
+#controls
+{
+	display:block;
+	text-align: left;
+	color: blue;
+	font-family: "Montserrat-Regular";
+}
+
+#selection
+{
+	display:block;
+	text-align: left;
+	color: blue;
+	font-family: "Montserrat-Regular";
+}
+#form
+{
+	clear: inline-end;
+	color: blue;
+	text-align: center;
+	font-family: "Montserrat-Regular";
+}
+
+#field1 {
+	font-size:12px;
+	padding:10px;
+	width:250px;
+	line-height:5.0;
+}
+
+#field2 {
+	font-size:12px;
+	padding:10px;
+	width:250px;
+	line-height:5.0;
+}
+
+#field3 {
+	font-size:12px;
+	padding:10px;
+	width:250px;
+	line-height:5.0;
+}
+
+#field4 {
+	font-size:12px;
+	padding:10px;
+	width:250px;
+	line-height:5.0;
+}
