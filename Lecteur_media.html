@@ -12,25 +12,12 @@
         <legend>Playlist</legend>
         <p>Image to use:</p>
 
-        <img id="pinkfloyd" width="220" height="277"
+        <img id="pinkfloyd" width="400" height="277"
         src="pinkfloyd.jpg" alt="Prisma">
 
-        <p>Canvas:</p>
+        <audio controls src="Music/Arctic/Arctic Monkeys - 11 - When The Sun Goes Down.m4a" id="audio"></audio>
+        <button onClick="changerAudio()">Click here to hear.</button>
 
-        <canvas id="myCanvas" width="240" height="297"
-        style="border:1px solid #d3d3d3;">
-        Your browser does not support the HTML5 canvas tag.
-        </canvas>
-
-        <script>
-        window.onload = function() {
-            var canvas = document.getElementById("myCanvas");
-            var ctx = canvas.getContext("2d");
-            var img = document.getElementById("pinkfloyd");
-        ctx.drawImage(img, 10, 10);
-        };
-        
-        </script>
         <div class="playlist" id="playlist">
             Playlist
         </div>
@@ -38,10 +25,11 @@
 
     <fieldset id="field2">
         <legend>Player</legend>
-    
+        
         <div class="player" id="player">
             Player
         </div>
+
     </fieldset>
 
     <fieldset id="field3">
