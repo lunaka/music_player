@@ -1,0 +1,186 @@
+@font-face {
+	font-family: 'Montserrat-Regular';
+	src: url('Montserrat-Regular.otf');
+}
+
+@font-face {
+	font-family: 'Montserrat-Italic';
+	src: url('Montserrat-Italic.otf');
+}
+
+body{
+	text-align: center;
+}
+
+#content
+{
+	display:block;
+	text-align: left;
+	color: blue;
+	font-family: "Montserrat-Regular";
+	font-size: 1.5em;
+}
+
+button
+{
+	clear: inline-end;
+	text-align: center;
+	font-family: "Montserrat-Regular";
+	font-size: 1.0em;
+	border-radius: 8px; /* Curve of border corners */
+	color: white; /* Text color */
+	height: 30px;
+	background-color:#0B2161;
+}
+
+fieldset
+{
+	display: inline-block;
+	border:4px solid #0B2161;
+    background-color:#A9F5E1;
+    -moz-border-radius:8px;
+	-webkit-border-radius:8px;	
+	border-radius:15px;
+    
+}
+
+legend {
+	font-weight: bold;
+	float: left;
+	width: 100%;
+	font-size:20px;
+	color:#0B2161;
+	font-family: "Montserrat-Regular";
+}
+
+#field_master{
+	background:url("backgrounds/background1.jpg");
+}
+
+#field1 {
+	font-size:12px;
+	padding:10px;
+	text-align: left;
+	/*margin-right:0px;*/
+	width:200px;
+	line-height:1.0;
+	display: inline;
+	float: right;
+}
+
+#field2 {
+	font-size:12px;
+	padding:10px;
+	/*width:500px;
+	line-height:5.0*/;
+	display: inline;
+	margin-bottom: 10px;
+}
+
+#field3 {
+	font-size:12px;
+	padding:10px;
+	text-align: left;
+	line-height:1.0;
+  	width: 200px;
+	display: inline;
+	margin:auto;
+}
+
+#field4 {
+	font-size:12px;
+	padding:10px;
+	text-align: left;
+	/*margin-left:0px;*/
+	line-height:1.0;
+	width: 200px;
+	display: inline;
+	float: left;
+}
+
+#field5 {
+	font-size:12px;
+	padding:10px;
+	text-align: left;
+	/*margin-left:0px;*/
+	line-height:1.0;
+	width: 300px;
+	display: inline;
+}
+
+#image {
+	width: 200px;
+	/*height: 200px;*/
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 15px;
+	padding-top:30px;
+}
+
+#titulo {
+	font-family: "Montserrat-Regular";
+	font-size:14px;
+	text-align: center;
+	color:#0B2161;
+	margin-bottom: 10px;
+}
+
+#music_player{
+	font-family: "Montserrat-Regular";
+	font-size:20px;
+	text-align: center;
+	color:#0B2161;
+	margin-bottom: 10px;
+	text-shadow: 1px 0 0 #fff, -1px 0 0 #fff, 0 1px 0 #fff, 0 -1px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
+}
+
+.texte1{
+	font-family: "Montserrat-Regular";
+	font-size:12px;
+	text-align: center;
+	color:#0B2161;
+	margin-bottom: 10px;
+}
+
+#music_name{
+	font-family: "Montserrat-Regular";
+	font-size:14px;
+	text-align: center;
+	color:#0B2161;
+	margin-bottom: 10px;
+}
+
+#audio{
+	width: 400px;
+}
+
+#getMusics{
+	text-align: left;
+}
+
+#getAlbums{
+	text-align: left;
+}
+
+.remove{
+	clear: inline-end;
+	font-family: "Montserrat-Regular";
+	font-size: 1.0em;
+	border-radius: 8px; /* Curve of border corners */
+	color: white; /* Text color */
+	height: 30px;
+	background-color:#0B2161;
+}
+
+li{
+	font-family: "Montserrat-Regular";
+	font-size:12px;
+	text-align: center;
+	color:#0B2161;
+	margin-bottom: 10px;
+}
+
+.but{
+	width: 100%;
+}
