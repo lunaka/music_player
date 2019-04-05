@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Lecteur media, par GROULT Guillaume et NETO-NAKADAIRA Lucas</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <fieldset id="field_master">
+
+        <div>
+            <script>audio = new Audio();</script></div>
+
+        <h1 id='music_player'>Music Player</h1>
+        <div id="div1">
+        <fieldset id='field2'>
+            <img id='Jacquette'src='Cle de sol.jpg' width="200px" height="200px">
+            <div id='music_name'>Music name</div>
+            <audio controls src="" id='audio' autoplay></audio>
+            <div>
+                <button class='but' id='play'>Lecture</button>
+                <button class='but' id='pause'>Pause</button>
+                <button class='but' id='stop'>Stop</button>
+            </div>
+        </fieldset>
+        
+        <fieldset id = 'field5'>
+            <div id='titulo'>Playlist</div>
+            <ul id='playList'>
+            </ul>
+        </fieldset>
+        
+        </div>
+       
+        <fieldset id='field4'>
+            <div id='getAuthor'> Auteurs </div>
+        </fieldset>
+
+        <fieldset id='field3'>
+            <div id='titulo'> Albums </div>
+            <div class='texte1' id='getAlbums'>Choisissez un auteur</div>
+        </fieldset>
+
+        <fieldset id='field1'>
+            <div id='titulo'> Musiques </div>
+            <div class='texte1' id='getMusics'>Choisissez un album</div>
+        </fieldset>
+        
+        <script src="jquery.js"></script>
+        <script src='player.js'></script>
+    </fieldset>
+</body>
