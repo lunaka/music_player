@@ -4,20 +4,19 @@ var playlist = [];
 
 song=document.getElementById('audio');
 
+//Fonctions des boutons Lecture, Pause, Stop
 function Pause(){
     song.pause();
-    console.log("Pause");
 }
 function Lecture(){
     song.play();
-    console.log("Lecture");
 }
 function Stop(){
     song.pause();
     song.currentTime=0;
-    console.log("Stop");
 }
 
+//Fonction affichant la liste des auteurs présents dans le dossier 'Documents/Music/'
 function getAuthor(){
   $.get('Documents/Music/', function(data, status){
     console.log('-------------------------->'+data);
@@ -32,6 +31,7 @@ function getAuthor(){
   });
 }
 
+//Fonction affichant la liste des albums de l'auteur author sélectionné présents dans le dossier 'Documents/Music/author'
 function getAlbums(author){
   $.get('Documents/Music/'+author, function(data, status){
     test = document.getElementById('getAlbums')
@@ -47,6 +47,7 @@ function getAlbums(author){
   });
 }
 
+//Fonction affichant la liste des pistes de l'album album de l'auteur author sélectionné présents dans le dossier 'Documents/Music/author/album'
 function getMusics(author,album){
   console.log('Documents/Music/'+author+'/'+album);
 
@@ -64,52 +65,53 @@ function getMusics(author,album){
   });
 }
 
+//Fonction jouant la piste située à l'url 'Documents/Music/author/album/music'
 function playMusic(author, album, music){
     song=document.getElementById('audio');
     song.setAttribute('src','Music/'+author+'/'+album+'/'+music);
     document.getElementById('music_name').innerHTML = music;
 }
 
+//Fonction qui change la musique jouée ainsi que la musique jouée.
 function ChangerPiste(author, album, music, image){
   images=document.getElementById('Jacquette');
   console.log('Documents/Music/'+author+'/'+album+'/'+image);
   images.setAttribute('src','Music/'+author+'/'+album+'/'+image);
-  song=document.getElementById('audio');
-  song.setAttribute('src','Music/'+author+'/'+album+'/'+music);
-  document.getElementById('music_name').innerHTML = music;
+  playMusic(author,album,music);
 }
 
+//Fonction qui ajoute une musique à la playlist
 function addToPL(author, album, music, image){
- ChangerPiste(author, album, music, image);
+  ChangerPiste(author, album, music, image);
   playlist.push(music);
   S='';
   for (i=0; i<playlist.length; i++){
     S = S + '<li id="'+playlist[i]+'">' + playlist[i] +
-    '<button class="remove" id="'+playlist[i]+'" onClick="'+"removeFromPL('" +playlist +"','"+playlist[i]+"'"+')">'+
+    '<button class="remove" id="'+playlist[i]+'" onClick="'+"removeFromPL('" +playlist +"','"+i+"'"+')">'+
     '<i class="fa fa-trash"></i>'+
     '</button>'+ '</li>' ;
   }
   document.getElementById('playList').innerHTML = S
 }
 
-function removeFromPL(playlist, song){
-    var index = playlist.indexOf(song);
-    console.log('song = ' + song);
-    console.log('playlist = ' + playlist);
-    console.log('index = ' + index);
-    if (index > -1) {
-        playlist.splice(index, 1);
+//Fonction qui retire une musique de la playlist
+function removeFromPL(playlist, index){
+  console.log('song = ' + playlist[index]);
+  console.log('playlist = ' + playlist);
+  console.log('index = ' + index);
+  S='';
+  for (i=0; i<playlist.length; i++){
+    if (i!=index){
+      S = S + '<li id="'+playlist[i]+'">' + playlist[i] +
+    '<button class="remove" id="'+playlist[i]+'" onClick="'+"removeFromPL('" +playlist +"','"+i+"'"+')">'
+    '<i class="fa fa-trash"></i>'+
+    '</button>'+ '</li>';
     }
-    S='';
-    for (i=0; i<playlist.length; i++){
-        S = S + '<div id="'+playlist[i]+'">' + playlist[i] +
-        '<button class="remove" id="'+playlist[i]+'" onClick="'+"removeFromPL('" +playlist +"','"+playlist[i]+"'"+')">'
-        '<i class="fa fa-trash"></i>'+
-        '</button>'+ '</div>';
-    }
-    document.getElementById('playList').innerHTML = S
+  }
+  document.getElementById('playList').innerHTML = S
 }
 
+//Affectation des eventListener
 play=document.getElementById('play');
 play.addEventListener("click",Lecture);
 pause=document.getElementById('pause');
@@ -117,3 +119,22 @@ pause.addEventListener("click",Pause);
 stop=document.getElementById('stop');
 stop.addEventListener("click",Stop);
 window.addEventListener("load",getAuthor)
+
+// %%%%%%%%%%%%%%% La barre de progression interactive %%%%%%%%%%%%%%%%%%%%%
+
+progressBar=document.getElementById('progress-bar')
+progressBarIndicator=document.querySelector('#progress-bar div')
+
+
+song.addEventListener('timeupdate', function () {
+	percent = (100 / this.duration) * this.currentTime;
+	progressBarIndicator.style.width = percent + '%';
+});
+
+progressBar.addEventListener('click',function(e){
+	var x = e.pageX - this.offsetLeft
+	xconvert = x/400 //A ajuster selon le width de #progress-bar dans le fichier style.css
+	xconvert.toFixed(5)
+	var temps = xconvert * song.duration
+	song.currentTime = (xconvert * song.duration).toFixed(3)
+})

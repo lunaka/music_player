@@ -118,7 +118,7 @@ legend {
 	padding-top:30px;
 }
 
-#titulo {
+#title {
 	font-family: "Montserrat-Regular";
 	font-size:14px;
 	text-align: center;
@@ -183,4 +183,19 @@ li{
 
 .but{
 	width: 100%;
+}
+
+#progress-bar {
+    height: 30px;
+    width: 400px;
+	background-color: white;
+	border-radius: 8px; /* Curve of border corners */
+}
+
+#progress-bar div {
+    width: 0;
+    height: 100%;
+    background-color: #0B2161;
+	transition-duration: 0.05s;
+	border-radius: 8px; /* Curve of border corners */
 }
