@@ -22,7 +22,6 @@ app.get('/Documents/Music', function (req, res) {
        })
        
     })
-    console.log(payload)
     res.status(200).send(payload)
   })
 }).use(express.static(path.join(__dirname + '/Documents/Music')));
@@ -47,7 +46,6 @@ app.get('/Documents/Music/:artist', function (req, res) {
        })
        
     })
-    console.log(payload)
     res.status(200).send(payload)
   })
 })
@@ -73,7 +71,6 @@ app.get('/Documents/Music/:artist/:album', function (req, res) {
        })
        
     })
-    console.log(payload)
     res.status(200).send(payload)
   })
 })

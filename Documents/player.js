@@ -5,6 +5,7 @@ var playlist = [];
 song=document.getElementById('audio');
 
 //Fonctions des boutons Lecture, Pause, Stop
+
 function Pause(){
     song.pause();
 }
@@ -17,21 +18,20 @@ function Stop(){
 }
 
 //Fonction affichant la liste des auteurs présents dans le dossier 'Documents/Music/'
+
 function getAuthor(){
   $.get('Documents/Music/', function(data, status){
-    console.log('-------------------------->'+data);
     test = document.getElementById('getAuthor');
     S = "";
     for (i=0; i<data.artists.length; i++){
       S = S + "<button class='but' id='"+data.artists[i].name+"' onClick="+ '"'+"getAlbums('" + data.artists[i].name + "')"+'">' + data.artists[i].name+'</button>'+'<br></br>'
     }
     test.innerHTML = S
-    console.log(S)
-    console.log('FIN DO GET AUTHOR');
   });
 }
 
 //Fonction affichant la liste des albums de l'auteur author sélectionné présents dans le dossier 'Documents/Music/author'
+
 function getAlbums(author){
   $.get('Documents/Music/'+author, function(data, status){
     test = document.getElementById('getAlbums')
@@ -42,15 +42,12 @@ function getAlbums(author){
     var noMusics = document.getElementById('getMusics');
     noMusics.innerHTML = 'Choisissez un album';
     test.innerHTML = S
-    console.log(S)
-    console.log('FIN DO GET ALBUMS');
   });
 }
 
 //Fonction affichant la liste des pistes de l'album album de l'auteur author sélectionné présents dans le dossier 'Documents/Music/author/album'
-function getMusics(author,album){
-  console.log('Documents/Music/'+author+'/'+album);
 
+function getMusics(author,album){
   $.get('Documents/Music/'+author+'/'+album, function(data, status){
     test = document.getElementById('getMusics');
     var last = data.titles.length;
@@ -61,11 +58,11 @@ function getMusics(author,album){
     
     } 
     test.innerHTML = S
-    console.log('FIN DO GET MUSICS');
   });
 }
 
 //Fonction jouant la piste située à l'url 'Documents/Music/author/album/music'
+
 function playMusic(author, album, music){
     song=document.getElementById('audio');
     song.setAttribute('src','Music/'+author+'/'+album+'/'+music);
@@ -73,45 +70,67 @@ function playMusic(author, album, music){
 }
 
 //Fonction qui change la musique jouée ainsi que la musique jouée.
+
 function ChangerPiste(author, album, music, image){
   images=document.getElementById('Jacquette');
-  console.log('Documents/Music/'+author+'/'+album+'/'+image);
   images.setAttribute('src','Music/'+author+'/'+album+'/'+image);
   playMusic(author,album,music);
 }
 
 //Fonction qui ajoute une musique à la playlist
+
 function addToPL(author, album, music, image){
   ChangerPiste(author, album, music, image);
   playlist.push(music);
-  S='';
-  for (i=0; i<playlist.length; i++){
-    S = S + '<li id="'+playlist[i]+'">' + playlist[i] +
-    '<button class="remove" id="'+playlist[i]+'" onClick="'+"removeFromPL('" +playlist +"','"+i+"'"+')">'+
+  S='<ul>';
+  for (i = 0 ; i < playlist.length ; i++){
+    S = S + ' <li id = " '+playlist[i]+' "> ' + playlist[i] +
+    '<button class = "remove" id = " ' + playlist[i] + ' " onClick = " ' + ' removeFromPL(' + i + ') "> '+
     '<i class="fa fa-trash"></i>'+
     '</button>'+ '</li>' ;
   }
-  document.getElementById('playList').innerHTML = S
+  document.getElementById('playList').innerHTML = S + '</ul>'
+  console.log(playlist)
 }
 
 //Fonction qui retire une musique de la playlist
-function removeFromPL(playlist, index){
-  console.log('song = ' + playlist[index]);
-  console.log('playlist = ' + playlist);
-  console.log('index = ' + index);
-  S='';
-  for (i=0; i<playlist.length; i++){
-    if (i!=index){
-      S = S + '<li id="'+playlist[i]+'">' + playlist[i] +
-    '<button class="remove" id="'+playlist[i]+'" onClick="'+"removeFromPL('" +playlist +"','"+i+"'"+')">'
+
+function removeFromPL(index){
+  S='<ul>';
+  console.log("DEBUT REMOVEFROMPL")
+  console.log("La playlist est : " + playlist)
+  console.log("Elle est de longueur " + playlist.length)
+  console.log("Musique à supprimer : " + playlist[index])
+  console.log("Son indice : " + index)
+  let L = []
+  for (i = 0 ; i < playlist.length ; i++){
+    if (i < index){
+      console.log(playlist[i])
+      console.log(i)
+      S = S + ' <li id = " '+playlist[i]+' "> ' + playlist[i] +
+    '<button class = "remove" id = " ' + playlist[i] + ' " onClick = " ' + ' removeFromPL(' + i + ') "> '+
     '<i class="fa fa-trash"></i>'+
-    '</button>'+ '</li>';
+    '</button>'+ '</li>' ;
+    L.push(playlist[i])
+    }
+    else if (i > index){
+    console.log(playlist[i])
+    console.log(i)
+    S = S + ' <li id = " '+playlist[i]+' "> ' + playlist[i] +
+    '<button class = "remove" id = " ' + playlist[i] + ' " onClick = " ' + ' removeFromPL(' + (i-1) + ') "> '+
+    '<i class="fa fa-trash"></i>'+
+    '</button>'+ '</li>' ;
+    L.push(playlist[i])
     }
   }
-  document.getElementById('playList').innerHTML = S
+  playlist = L
+  document.getElementById('playList').innerHTML = S + '</ul>'
+  console.log("Nouvelle playlist : " + playlist)
+  console.log("FIN REMOVEFROMPL")
 }
 
 //Affectation des eventListener
+
 play=document.getElementById('play');
 play.addEventListener("click",Lecture);
 pause=document.getElementById('pause');
@@ -125,7 +144,6 @@ window.addEventListener("load",getAuthor)
 progressBar=document.getElementById('progress-bar')
 progressBarIndicator=document.querySelector('#progress-bar div')
 
-
 song.addEventListener('timeupdate', function () {
 	percent = (100 / this.duration) * this.currentTime;
 	progressBarIndicator.style.width = percent + '%';
@@ -138,3 +156,17 @@ progressBar.addEventListener('click',function(e){
 	var temps = xconvert * song.duration
 	song.currentTime = (xconvert * song.duration).toFixed(3)
 })
+
+// %%%%%%%%%%%%%%%%%%%% Changement de musique automatique %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+function nextTrack(artiste, album, music, image){
+  //Fonction à appeler dans l'audio lors de l'évènement onEnded de la balise Audio
+  // Prends l'artiste et l'album en arguments, cherche l'indice de la musique actuelle et changer la musique avec la piste d'indice égal à l'indice actuelle + 1 
+  let L = getMusics(artiste, album)
+  for (i = 0 ; i < L.length ; i++){
+    if (L[i] == music) {
+      addToPL(artiste, album, L[i], image)
+    }
+  }
+
+}
