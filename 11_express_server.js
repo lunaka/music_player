@@ -123,4 +123,7 @@ app.get('/player', function(req,res){
   res.status(200).sendFile(path.join(__dirname+'/music_player.html'))
 })
 
+console.log('Serveur démarré')
+console.log('Pour avoir accès à l\'appli web, rendez-vous depuis votre navigateur à cette adresse : localhost:8080/player')
+
 app.listen(8080)

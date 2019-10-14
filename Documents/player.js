@@ -146,27 +146,13 @@ progressBarIndicator=document.querySelector('#progress-bar div')
 
 song.addEventListener('timeupdate', function () {
 	percent = (100 / this.duration) * this.currentTime;
-	progressBarIndicator.style.width = percent + '%';
+  progressBarIndicator.style.width = percent + '%';
 });
 
 progressBar.addEventListener('click',function(e){
 	var x = e.pageX - this.offsetLeft
 	xconvert = x/400 //A ajuster selon le width de #progress-bar dans le fichier style.css
 	xconvert.toFixed(5)
-	var temps = xconvert * song.duration
 	song.currentTime = (xconvert * song.duration).toFixed(3)
 })
 
-// %%%%%%%%%%%%%%%%%%%% Changement de musique automatique %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-function nextTrack(artiste, album, music, image){
-  //Fonction à appeler dans l'audio lors de l'évènement onEnded de la balise Audio
-  // Prends l'artiste et l'album en arguments, cherche l'indice de la musique actuelle et changer la musique avec la piste d'indice égal à l'indice actuelle + 1 
-  let L = getMusics(artiste, album)
-  for (i = 0 ; i < L.length ; i++){
-    if (L[i] == music) {
-      addToPL(artiste, album, L[i], image)
-    }
-  }
-
-}

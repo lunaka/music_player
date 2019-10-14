@@ -63,9 +63,11 @@ legend {
 	text-align: left;
 	/*margin-right:0px;*/
 	width:200px;
+	height: 170px;
 	line-height:1.0;
 	display: inline;
 	float: right;
+	overflow : auto;
 }
 
 #field2 {
@@ -84,8 +86,10 @@ legend {
 	text-align: left;
 	line-height:1.0;
   	width: 200px;
+	height: 170px;
 	display: inline;
 	margin:auto;
+	overflow : auto;
 }
 
 #field4 {
@@ -95,8 +99,10 @@ legend {
 	/*margin-left:0px;*/
 	line-height:1.0;
 	width: 200px;
+	height: 170px;
 	display: inline;
 	float: left;
+	overflow : auto;
 }
 
 #field5 {
@@ -108,7 +114,7 @@ legend {
 	width: 300px;
 	height:410px;
 	display: inline;
-	overflow : scroll
+	overflow : auto;
 }
 
 #image {
