@@ -27,8 +27,8 @@ Ceci est un projet de développement Web à titre pédagogique. Il est en lien a
 Pour utiliser le music_player :
 1. Installer Node.js
 2. Ouvrir une invite de commande et se déplacer dans le dossier du projet avec la commande "cd"
-3. Installer les node_modules suivants avec la commande "npm install nomDuModule" : fs, path et express
-4. Faire la commande "node 11_express_server.js" pour lancer le serveur
+3. Installer les node_modules avec la commande "npm install". Les modules utilisées sont renseignés dans l'objet package.json
+4. Faire la commande "node server.js" pour lancer le serveur
 5. Ouvrir un navigateur (Firefox de préférence)
 6. Aller à l'URL suivant : localhost:8080/player
 7. Vous pouvez maintenant manipuler le music_player
